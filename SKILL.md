@@ -1,9 +1,9 @@
 ---
-name: crossborder-pdp-conversion-strategy
+name: ecom-pdp
 description: Build high-converting cross-border ecommerce PDP, hero image, product image stack, and AI image prompt strategy by resolving minimum inputs in priority order from user input, attachments, context, web research, logic inference, and explicit assumptions/defaults; then diagnose the conversion driver, produce an English (US) baseline, optionally localize while preserving intent, and generate executable image prompts or images through the bundled OpenAI-compatible image script.
 ---
 
-# Cross-Border PDP Conversion Strategy Skill
+# Ecom PDP Skill
 
 当用户需要跨境电商商品主图、PDP 详情页、Amazon / Shopify / TikTok Shop 图片、A+ content、广告图、商品图文案、转化优化、英文基准文案、本地化适配，或直接 AI 生图时，使用这个 Skill。
 

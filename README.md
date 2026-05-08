@@ -1,8 +1,102 @@
-# Cross-Border PDP Conversion Strategy Skill
+# Ecom PDP Skill
 
-一个面向 Codex / OpenClaw 的跨境电商 PDP 转化策略 Skill。
+一个面向 AI Agent 的跨境电商商品详情页转化策略 Skill。PDP 指 Product Detail Page。
 
 它的目标是先判断商品为什么能卖，再输出英文基准文案、主图 / 详情页结构、图内短文案、可执行 AI 生图 Prompt，并在配置 OpenAI 兼容图片 API 后直接出图。
+
+## 快速开始
+
+把这句话发给你的 AI Agent：
+
+```text
+请安装这个 Skill：`https://github.com/coolqoo/1click-ecom-detailpage`
+```
+
+安装好后需配置生图模型 API（参考 [API 配置](#api-配置)），之后就可以这样直接使用了。注意：如果不配置 API 则只能生成 Prompt：
+
+```text
+用 ecom-pdp 给这款产品做 Amazon US PDP 图包：
+输出 5 张主图 + 8 张详情页图。
+```
+
+## 手动安装示例
+
+要求：
+
+- AI Agent 可读取本地 Skill 目录。
+- Python 3.10+，生图脚本只使用标准库。
+- 可选：OpenAI 兼容 Images API 配置，用于直接出图。
+
+如果你的 Agent 使用 `~/.codex/skills`，可从本仓库根目录安装：
+
+```bash
+mkdir -p ~/.codex/skills/ecom-pdp
+rsync -a --exclude .git --exclude .env --exclude "generated-images/" ./ ~/.codex/skills/ecom-pdp/
+```
+
+验证安装：
+
+```bash
+python3 ~/.codex/skills/ecom-pdp/scripts/generate_image.py --help
+```
+
+配置直接出图能力：
+
+```bash
+cp .env.example .env
+```
+
+然后在 `.env` 中填写：
+
+```dotenv
+IMG_BASE_URL=https://api.openai.com/v1
+IMG_MODEL=gpt-image-1.5
+IMG_API_KEY=your-api-key
+```
+
+配置齐全时默认直接生成图片；配置缺失时默认只输出 Prompt。
+
+## 快速使用示例
+
+在 AI Agent 里直接描述任务：
+
+```text
+用 ecom-pdp 给这款便携榨汁杯做 Amazon US PDP 图包：
+目标人群是健身和通勤人群，卖点是 20 秒打碎、USB-C 充电、便携防漏。
+输出 5 张主图 + 8 张详情页图，先给 Prompt；如果本地 API 配置齐全就直接出图。
+```
+
+只输出 Prompt：
+
+```bash
+python3 scripts/generate_image.py \
+  --mode prompt \
+  --prompt "premium Amazon main image for a portable blender, clean white background, large product, concise benefit label" \
+  --job-dir generated-images/portable-blender-pack-20260509-120000 \
+  --asset-type main \
+  --size 1024x1024
+```
+
+默认自动模式：
+
+```bash
+python3 scripts/generate_image.py \
+  --prompt-file prompts/main-01.txt \
+  --job-dir generated-images/portable-blender-pack-20260509-120000 \
+  --asset-type main \
+  --size 1024x1024
+```
+
+使用产品参考图生成临时角度图：
+
+```bash
+python3 scripts/generate_image.py \
+  --prompt-file prompts/angle-sheet.txt \
+  --image product.png \
+  --job-dir generated-images/portable-blender-pack-20260509-120000 \
+  --asset-type angle-sheet \
+  --size 1024x1024
+```
 
 ## 适用场景
 
