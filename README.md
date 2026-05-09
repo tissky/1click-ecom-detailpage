@@ -28,16 +28,13 @@
 ## 🖼️ 真实效果展示
 
 **输入你的需求（示例）：**
-> *(请替换此处为你真实的输入截图)*
-![输入示例](https://via.placeholder.com/800x200?text=Your+Input+Screenshot+Here)
+![image.png](https://image-b7a.pages.dev/file/1778338782975_image.png)
 
 **自动生成的主图：**
-> *(请替换此处为你真实的主图输出截图)*
-![主图输出示例](https://via.placeholder.com/800x400?text=Hero+Image+Output+Here)
+![image.png](https://image-b7a.pages.dev/file/1778338861993_image.png)
 
 **自动生成的详情页：**
-> *(请替换此处为你真实的详情页输出截图)*
-![详情页输出示例](https://via.placeholder.com/800x600?text=Detail+Page+Output+Here)
+![image.png](https://image-b7a.pages.dev/file/1778338883692_image.png)
 
 ---
 
